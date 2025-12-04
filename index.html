@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Transition Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1e3a5f;
+            --navy-light: #2d5a87;
+            --white: #ffffff;
+            --gray: #64748b;
+            --gray-light: #f1f5f9;
+            --gray-border: #e2e8f0;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --orange: #f97316;
+            --gemini-blue: #4285f4;
+            --notebook-orange: #ea8600;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--gray-light);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 1.5rem; }
+
+        header {
+            text-align: center;
+            padding: 1rem 0;
+            border-bottom: 2px solid var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.75rem;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle { color: var(--gray); font-size: 0.9rem; }
+
+        /* Daily Check-in Hero */
+        .daily-checkin {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daily-checkin.completed {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+
+        .checkin-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .streak-display {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .streak-fire {
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .streak-number {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .streak-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .date-display {
+            text-align: right;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .checkin-main {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .week-indicator {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .today-task-label {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .today-task {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .task-duration {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .checkin-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .checkin-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 0.85rem 1.5rem;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-done {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .btn-done:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-skip {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-skip:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .checkin-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: white;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .days-left {
+            font-weight: 600;
+        }
+
+        .completed-message {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .completed-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .completed-message p {
+            opacity: 0.9;
+        }
+
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            color: var(--navy);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tab:hover { border-color: var(--navy); }
+        .tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 0.85rem;
+            border: 1px solid var(--gray-border);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .phase-block {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid var(--gray-border);
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-border);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .phase-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--navy);
+        }
+
+        .phase-progress { font-size: 0.8rem; color: var(--gray); }
+
+        .week-card {
+            background: var(--gray-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid var(--navy);
+            transition: all 0.2s;
+        }
+
+        .week-card.completed { opacity: 0.7; border-left-color: var(--green); }
+        .week-card.completed .week-title { text-decoration: line-through; }
+        .week-card.current { border-left-color: var(--orange); background: #fff7ed; }
+
+        .week-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .week-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--gray);
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .week-checkbox:hover { border-color: var(--navy); }
+        .week-checkbox.checked { background: var(--green); border-color: var(--green); }
+
+        .week-checkbox svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--white);
+            stroke-width: 3;
+            opacity: 0;
+        }
+
+        .week-checkbox.checked svg { opacity: 1; }
+
+        .week-main { flex: 1; }
+
+        .week-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .week-title { font-weight: 600; color: var(--navy); font-size: 0.95rem; }
+
+        .week-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+        .week-badge {
+            font-size: 0.65rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .badge-hours { background: #dbeafe; color: #1e40af; }
+        .badge-easy { background: #dcfce7; color: #166534; }
+        .badge-medium { background: #fef3c7; color: #92400e; }
+        .badge-hard { background: #fee2e2; color: #991b1b; }
+
+        .week-date { font-size: 0.75rem; color: var(--gray); margin-top: 0.25rem; }
+
+        .week-why {
+            background: var(--white);
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            margin: 0.75rem 0;
+            font-size: 0.8rem;
+            color: var(--gray);
+            border-left: 3px solid var(--navy-light);
+        }
+
+        .week-why strong { color: var(--navy); }
+
+        .week-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .week-section {
+            background: var(--white);
+            border-radius: 6px;
+            padding: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-list {
+            list-style: none;
+            font-size: 0.78rem;
+            color: var(--gray);
+        }
+
+        .section-list li {
+            padding: 0.2rem 0;
+            padding-left: 0.75rem;
+            position: relative;
+        }
+
+        .section-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--navy);
+            font-size: 0.7rem;
+        }
+
+        .week-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+        }
+
+        .week-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            background: var(--white);
+            color: var(--navy);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--gray-border);
+            transition: all 0.2s;
+        }
+
+        .week-link:hover {
+            background: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        .ai-tools-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px dashed var(--gray-border);
+        }
+
+        .ai-tools-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .ai-tools-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .ai-tools-grid { grid-template-columns: 1fr; }
+        }
+
+        .ai-tool-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 0.75rem;
+            border: 2px solid;
+        }
+
+        .gemini-card { border-color: var(--gemini-blue); }
+        .notebook-card { border-color: var(--notebook-orange); }
+
+        .ai-tool-header {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .gemini-card .ai-tool-header { color: var(--gemini-blue); }
+        .notebook-card .ai-tool-header { color: var(--notebook-orange); }
+
+        .ai-tool-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .gemini-icon { background: var(--gemini-blue); }
+        .notebook-icon { background: var(--notebook-orange); }
+
+        .ai-tool-step { margin-bottom: 0.6rem; }
+        .ai-tool-step:last-child { margin-bottom: 0; }
+
+        .step-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
+        }
+
+        .step-content {
+            font-size: 0.75rem;
+            color: var(--navy);
+        }
+
+        .prompt-box {
+            background: var(--gray-light);
+            border-radius: 4px;
+            padding: 0.5rem;
+            font-size: 0.72rem;
+            color: var(--navy);
+            margin-top: 0.3rem;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid var(--gray-border);
+            font-family: 'SF Mono', Monaco, monospace;
+            line-height: 1.4;
+        }
+
+        .prompt-box:hover { border-color: var(--navy); }
+
+        .prompt-box::after {
+            content: "📋";
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            font-size: 0.6rem;
+        }
+
+        .prompt-box.copied::after {
+            content: "✓";
+            color: var(--green);
+        }
+
+        .upload-list {
+            font-size: 0.72rem;
+            color: var(--gray);
+            margin-top: 0.3rem;
+            list-style: none;
+        }
+
+        .upload-list li {
+            padding: 0.15rem 0 0.15rem 1rem;
+            position: relative;
+        }
+
+        .upload-list li:before {
+            content: "📄";
+            position: absolute;
+            left: 0;
+            font-size: 0.65rem;
+        }
+
+        .week-notes {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--gray-border);
+        }
+
+        .week-notes-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .week-notes-textarea {
+            width: 100%;
+            min-height: 50px;
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 6px;
+            padding: 0.5rem;
+            color: var(--navy);
+            font-family: inherit;
+            font-size: 0.78rem;
+            resize: vertical;
+        }
+
+        .week-notes-textarea:focus {
+            outline: none;
+            border-color: var(--navy);
+        }
+
+        .notes-summary {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--gray-border);
+        }
+
+        .notes-summary h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .notes-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .note-item {
+            padding: 0.75rem;
+            border-left: 3px solid var(--navy);
+            background: var(--gray-light);
+            margin-bottom: 0.5rem;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .note-item-header {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .note-item-content {
+            font-size: 0.78rem;
+            color: var(--gray);
+            white-space: pre-wrap;
+        }
+
+        .no-notes {
+            color: var(--gray);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Jobs Section */
+        .jobs-section {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.25rem;
+            border: 1px solid var(--gray-border);
+        }
+
+        .jobs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .jobs-header h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--navy);
+        }
+
+        .jobs-meta {
+            font-size: 0.72rem;
+            color: var(--gray);
+        }
+
+        .jobs-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--gray-light);
+            border: 1px solid var(--gray-border);
+            color: var(--navy);
+            padding: 0.35rem 0.75rem;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--navy);
+            color: var(--white);
+            border-color: var(--navy);
+        }
+
+        .table-wrapper { overflow-x: auto; }
+
+        .jobs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78rem;
+        }
+
+        .jobs-table th {
+            text-align: left;
+            padding: 0.6rem 0.4rem;
+            border-bottom: 2px solid var(--navy);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--navy);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .jobs-table td {
+            padding: 0.6rem 0.4rem;
+            border-bottom: 1px solid var(--gray-border);
+            vertical-align: top;
+        }
+
+        .jobs-table tr:hover { background: var(--gray-light); }
+        .jobs-table tr.inactive { opacity: 0.5; }
+
+        .company-name { font-weight: 600; color: var(--navy); }
+
+        .tier-badge {
+            font-size: 0.6rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .tier-1 { background: #dbeafe; color: #1e40af; }
+        .tier-2 { background: #e0e7ff; color: #3730a3; }
+        .tier-3 { background: #f3e8ff; color: #6b21a8; }
+
+        .salary-range { font-weight: 500; color: var(--green); white-space: nowrap; }
+
+        .job-requirements {
+            font-size: 0.72rem;
+            color: var(--gray);
+            max-width: 280px;
+        }
+
+        .job-requirements ul { margin: 0; padding-left: 0.9rem; }
+        .job-requirements li { margin-bottom: 0.15rem; }
+
+        .apply-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.68rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .apply-btn:hover { background: var(--navy-light); }
+
+        .notes-section {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 10px;
+            padding: 1.25rem;
+        }
+
+        .notes-section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .notes-textarea {
+            width: 100%;
+            min-height: 180px;
+            background: var(--gray-light);
+            border: 1px solid var(--gray-border);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--navy);
+            font-family: inherit;
+            font-size: 0.85rem;
+            resize: vertical;
+        }
+
+        .notes-textarea:focus {
+            outline: none;
+            border-color: var(--navy);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--gray-border);
+            color: var(--gray);
+            font-size: 0.78rem;
+            margin-top: 1.5rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+            .streak-number { font-size: 2rem; }
+            .today-task { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Career Transition Plan</h1>
+            <p class="subtitle">35-Week Roadmap | December 2025 – August 2026</p>
+        </header>
+
+        <!-- Daily Check-in Hero -->
+        <div class="daily-checkin" id="dailyCheckin">
+            <div class="checkin-top">
+                <div class="streak-display">
+                    <span class="streak-fire" id="streakFire">🔥</span>
+                    <div>
+                        <div class="streak-number" id="streakNumber">0</div>
+                        <div class="streak-label">day streak</div>
+                    </div>
+                </div>
+                <div class="date-display" id="dateDisplay"></div>
+            </div>
+            
+            <div class="checkin-main" id="checkinMain">
+                <div class="week-indicator" id="weekIndicator">Week 1 of 35</div>
+                <div class="today-task-label">TODAY'S FOCUS</div>
+                <div class="today-task" id="todayTask">Loading...</div>
+                <div class="task-duration" id="taskDuration">⏱️ ~30 min</div>
+            </div>
+
+            <div class="checkin-buttons" id="checkinButtons">
+                <button class="checkin-btn btn-done" onclick="markDone()">✓ Done</button>
+                <button class="checkin-btn btn-skip" onclick="markSkip()">😓 Skip Today</button>
+            </div>
+
+            <div class="checkin-footer">
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <div class="days-left" id="daysLeft">178 days left</div>
+            </div>
+        </div>
+
+        <div class="confetti" id="confetti"></div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showSection('weekly')">📅 Weekly Plan</button>
+            <button class="tab" onclick="showSection('jobs')">💼 AI Jobs</button>
+            <button class="tab" onclick="showSection('notes')">📝 Notes Summary</button>
+        </div>
+
+        <!-- Weekly Plan Section -->
+        <div id="weekly" class="content-section active">
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-value" id="weeksCompleted">0/12</div>
+                    <div class="stat-label">Weeks Done</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="tasksCompleted">0</div>
+                    <div class="stat-label">Tasks Done</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="currentPhase">1</div>
+                    <div class="stat-label">Current Phase</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="notesCount">0</div>
+                    <div class="stat-label">Notes</div>
+                </div>
+            </div>
+
+            <!-- Phase 1 -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 1: Technical Foundation (Weeks 1-12)</div>
+                    <div class="phase-progress" id="phase1Progress">0/6 complete</div>
+                </div>
+
+                <div class="week-card" data-week="1" data-phase="1">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 1: LLM Fundamentals</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">8 hrs</span>
+                                    <span class="week-badge badge-easy">Easy</span>
+                                </div>
+                            </div>
+                            <div class="week-date">Dec 2-8, 2025</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> Understanding LLMs is foundational for any AI role.</div>
+                    <div class="week-links">
+                        <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" class="week-link">Karpathy Video</a>
+                        <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" class="week-link">Illustrated Transformer</a>
+                    </div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="1" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+
+                <div class="week-card" data-week="2" data-phase="1">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 2-3: ML Foundations - Supervised Learning</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">20 hrs</span>
+                                    <span class="week-badge badge-medium">Medium</span>
+                                </div>
+                            </div>
+                            <div class="week-date">Dec 9-22, 2025</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> Core ML concepts underpin all AI products.</div>
+                    <div class="week-links">
+                        <a href="https://www.coursera.org/learn/machine-learning" target="_blank" class="week-link">Coursera ML</a>
+                    </div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="2" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+
+                <div class="week-card" data-week="4" data-phase="1">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 4-5: Neural Networks & Deep Learning</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">22 hrs</span>
+                                    <span class="week-badge badge-hard">Hard</span>
+                                </div>
+                            </div>
+                            <div class="week-date">Dec 23 - Jan 5</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> Neural networks are the foundation of modern AI.</div>
+                    <div class="week-links">
+                        <a href="https://www.coursera.org/learn/advanced-learning-algorithms" target="_blank" class="week-link">Coursera Course 2</a>
+                        <a href="https://www.3blue1brown.com/topics/neural-networks" target="_blank" class="week-link">3Blue1Brown</a>
+                    </div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="4" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+
+                <div class="week-card" data-week="6" data-phase="1">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 6: LLM APIs & Prompt Engineering</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">8 hrs</span>
+                                    <span class="week-badge badge-easy">Easy</span>
+                                </div>
+                            </div>
+                            <div class="week-date">Jan 6-12, 2026</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> Hands-on API experience is essential.</div>
+                    <div class="week-links">
+                        <a href="https://docs.anthropic.com" target="_blank" class="week-link">Anthropic Docs</a>
+                        <a href="https://platform.openai.com/docs" target="_blank" class="week-link">OpenAI Docs</a>
+                    </div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="6" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+
+                <div class="week-card" data-week="7" data-phase="1">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 7-9: Causal Inference & Causal ML</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">30 hrs</span>
+                                    <span class="week-badge badge-hard">Hard</span>
+                                </div>
+                            </div>
+                            <div class="week-date">Jan 13 - Feb 2, 2026</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> Your secret weapon for Stanford.</div>
+                    <div class="week-links">
+                        <a href="https://www.bradyneal.com/causal-inference-course" target="_blank" class="week-link">Brady Neal</a>
+                        <a href="https://matheusfacure.github.io/python-causality-handbook/" target="_blank" class="week-link">Python Causality</a>
+                    </div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="7" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+
+                <div class="week-card" data-week="10" data-phase="1">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 10-12: CS229 Deep Dive & Review</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">26 hrs</span>
+                                    <span class="week-badge badge-hard">Hard</span>
+                                </div>
+                            </div>
+                            <div class="week-date">Feb 3-23, 2026</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> PhD-level rigor for Stanford.</div>
+                    <div class="week-links">
+                        <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU" target="_blank" class="week-link">CS229 YouTube</a>
+                    </div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="10" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 2: Build Portfolio & Narrative (Weeks 13-24)</div>
+                    <div class="phase-progress" id="phase2Progress">0/3 complete</div>
+                </div>
+
+                <div class="week-card" data-week="13" data-phase="2">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 13-16: Portfolio Project Build</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">26 hrs</span>
+                                    <span class="week-badge badge-hard">Hard</span>
+                                </div>
+                            </div>
+                            <div class="week-date">Feb 24 - Mar 23, 2026</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> #1 differentiator for non-traditional candidates.</div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="13" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+
+                <div class="week-card" data-week="17" data-phase="2">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 17-19: LinkedIn, Resume & Content</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">18 hrs</span>
+                                    <span class="week-badge badge-medium">Medium</span>
+                                </div>
+                            </div>
+                            <div class="week-date">Mar 24 - Apr 13, 2026</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> Your digital presence is your first impression.</div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="17" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+
+                <div class="week-card" data-week="20" data-phase="2">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 20-24: Stanford HAI & Networking</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">20 hrs</span>
+                                    <span class="week-badge badge-medium">Medium</span>
+                                </div>
+                            </div>
+                            <div class="week-date">Apr 14 - May 18, 2026</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> Networking opens doors applications can't.</div>
+                    <div class="week-links">
+                        <a href="https://hai.stanford.edu/events" target="_blank" class="week-link">HAI Events</a>
+                    </div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="20" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3-4 -->
+            <div class="phase-block">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 3-4: Job Search & Execution (Weeks 25-35)</div>
+                    <div class="phase-progress" id="phase3Progress">0/2 complete</div>
+                </div>
+
+                <div class="week-card" data-week="25" data-phase="3">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 25-28: Interview Prep & Applications</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">22 hrs</span>
+                                    <span class="week-badge badge-hard">Hard</span>
+                                </div>
+                            </div>
+                            <div class="week-date">May 19 - Jun 15, 2026</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> Thorough prep and early applications.</div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="25" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+
+                <div class="week-card" data-week="29" data-phase="3">
+                    <div class="week-top">
+                        <div class="week-checkbox" onclick="toggleWeek(this)"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></div>
+                        <div class="week-main">
+                            <div class="week-title-row">
+                                <span class="week-title">Week 29-35: Interviews, Offers & Transition</span>
+                                <div class="week-meta">
+                                    <span class="week-badge badge-hours">25 hrs</span>
+                                    <span class="week-badge badge-hard">Hard</span>
+                                </div>
+                            </div>
+                            <div class="week-date">Jun 16 - Aug 3, 2026</div>
+                        </div>
+                    </div>
+                    <div class="week-why"><strong>Why:</strong> Close strong before deadline.</div>
+                    <div class="week-notes">
+                        <div class="week-notes-label">📝 My Notes</div>
+                        <textarea class="week-notes-textarea" data-week-note="29" placeholder="Key learnings..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jobs Section -->
+        <div id="jobs" class="content-section">
+            <div class="jobs-section">
+                <div class="jobs-header">
+                    <div>
+                        <h2>💼 AI Jobs Database</h2>
+                        <div class="jobs-meta">Last updated: <span id="jobsLastUpdated">Loading...</span></div>
+                    </div>
+                    <div class="jobs-filters">
+                        <button class="filter-btn active" onclick="filterJobs('all')">All</button>
+                        <button class="filter-btn" onclick="filterJobs(1)">Tier 1</button>
+                        <button class="filter-btn" onclick="filterJobs(2)">Tier 2</button>
+                        <button class="filter-btn" onclick="filterJobs(3)">Tier 3</button>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="jobs-table" id="jobsTable">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Role</th>
+                                <th>Salary</th>
+                                <th>Key Requirements</th>
+                                <th>Tier</th>
+                                <th>Apply</th>
+                            </tr>
+                        </thead>
+                        <tbody id="jobsTableBody">
+                            <tr><td colspan="6" class="loading">Loading jobs...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.72rem; color: var(--gray);">
+                    💡 To update jobs: edit <code>jobs.json</code> and push to GitHub
+                </p>
+            </div>
+        </div>
+
+        <!-- Notes Summary Section -->
+        <div id="notes" class="content-section">
+            <div class="notes-summary">
+                <h2>📊 All Week Notes Summary</h2>
+                <div class="notes-list" id="notesSummary">
+                    <p class="no-notes">No notes yet.</p>
+                </div>
+            </div>
+            
+            <div class="notes-section" style="margin-top: 1rem;">
+                <h2>📝 General Notes & Ideas</h2>
+                <textarea class="notes-textarea" id="generalNotes" placeholder="General notes, contacts, ideas..."></textarea>
+            </div>
+        </div>
+
+        <footer>
+            <p>35-Week Plan | Dec 2025 → Aug 2026 | 🔥 Stay consistent</p>
+        </footer>
+    </div>
+
+    <script>
+        // Daily tasks by week
+        const dailyTasks = {
+            1: [
+                { task: "Watch Karpathy's LLM intro (first 30 min)", duration: "30 min" },
+                { task: "Watch Karpathy's LLM intro (finish)", duration: "30 min" },
+                { task: "Read Illustrated Transformer blog", duration: "25 min" },
+                { task: "Gemini: Generate LLM guide, save as PDF", duration: "20 min" },
+                { task: "NotebookLM: Upload PDFs, generate audio", duration: "15 min" },
+                { task: "Listen to audio + write 1-page summary", duration: "30 min" }
+            ],
+            2: [
+                { task: "Andrew Ng ML Course: Week 1 videos", duration: "45 min" },
+                { task: "Andrew Ng ML Course: Week 1 quiz", duration: "30 min" },
+                { task: "Andrew Ng ML Course: Week 2 videos", duration: "40 min" },
+                { task: "Gemini: Get gradient descent finance analogy", duration: "20 min" },
+                { task: "Andrew Ng ML Course: Week 2 quiz", duration: "30 min" },
+                { task: "Andrew Ng ML Course: Week 3 videos", duration: "45 min" },
+                { task: "Andrew Ng ML Course: Week 3 quiz", duration: "30 min" },
+                { task: "Gemini: Generate logistic regression code", duration: "30 min" },
+                { task: "Build your own classifier in Python", duration: "45 min" }
+            ],
+            4: [
+                { task: "Watch 3Blue1Brown Neural Networks Ch 1-2", duration: "35 min" },
+                { task: "Andrew Ng Course 2: Week 1 videos", duration: "45 min" },
+                { task: "Andrew Ng Course 2: Week 1 lab", duration: "40 min" },
+                { task: "Andrew Ng Course 2: Week 2 videos", duration: "45 min" },
+                { task: "Gemini: Explain backpropagation with numbers", duration: "25 min" },
+                { task: "Build neural network from scratch", duration: "50 min" },
+                { task: "Train model on Kaggle dataset", duration: "40 min" }
+            ],
+            6: [
+                { task: "Read Anthropic Claude API docs", duration: "30 min" },
+                { task: "Read OpenAI API docs", duration: "30 min" },
+                { task: "Build simple chatbot with Claude API", duration: "45 min" },
+                { task: "Gemini: Learn 10 prompt engineering techniques", duration: "25 min" },
+                { task: "Practice prompting techniques", duration: "30 min" }
+            ],
+            7: [
+                { task: "Brady Neal: Chapter 1", duration: "40 min" },
+                { task: "Brady Neal: Chapter 2 (Potential Outcomes)", duration: "45 min" },
+                { task: "Brady Neal: Chapter 3-4", duration: "45 min" },
+                { task: "Gemini: Deep Research causal inference for finance", duration: "30 min" },
+                { task: "Brady Neal: Chapter 5-6", duration: "45 min" },
+                { task: "Python Causality Handbook: PSM chapter", duration: "40 min" },
+                { task: "Read Susan Athey Double ML paper", duration: "40 min" },
+                { task: "EconML: Implement Double ML tutorial", duration: "45 min" },
+                { task: "Apply Double ML to finance dataset", duration: "50 min" }
+            ],
+            10: [
+                { task: "CS229 Lecture 1-2", duration: "45 min" },
+                { task: "CS229 Lecture 3-4", duration: "45 min" },
+                { task: "Gemini: Explain bias-variance decomposition", duration: "25 min" },
+                { task: "CS229 Problem Set 1", duration: "50 min" },
+                { task: "CS229 Lectures 5-6", duration: "50 min" },
+                { task: "CS229 Problem Set 2", duration: "50 min" },
+                { task: "Gemini: Generate comprehensive review quiz", duration: "30 min" }
+            ],
+            13: [
+                { task: "Gemini: Brainstorm 5 portfolio project ideas", duration: "30 min" },
+                { task: "Research similar GitHub projects", duration: "40 min" },
+                { task: "Define project scope & data sources", duration: "35 min" },
+                { task: "Collect & explore dataset", duration: "45 min" },
+                { task: "Data cleaning & preprocessing", duration: "50 min" },
+                { task: "Build baseline model", duration: "45 min" },
+                { task: "Iterate on model", duration: "50 min" },
+                { task: "Create visualizations", duration: "40 min" },
+                { task: "Write README", duration: "35 min" },
+                { task: "Gemini: Review & polish repo", duration: "30 min" }
+            ],
+            17: [
+                { task: "Gemini: Rewrite LinkedIn profile", duration: "35 min" },
+                { task: "Update LinkedIn experience bullets", duration: "40 min" },
+                { task: "Gemini: Tailor resume for target role #1", duration: "35 min" },
+                { task: "Gemini: Tailor resume for target role #2", duration: "30 min" },
+                { task: "Gemini: Draft LinkedIn post about project", duration: "30 min" },
+                { task: "Publish LinkedIn post", duration: "20 min" }
+            ],
+            20: [
+                { task: "Gemini: Research Stanford faculty papers", duration: "35 min" },
+                { task: "NotebookLM: Upload papers, find themes", duration: "30 min" },
+                { task: "Register for Stanford HAI event", duration: "15 min" },
+                { task: "Gemini: Generate networking message templates", duration: "25 min" },
+                { task: "Send 5 LinkedIn connection requests", duration: "25 min" },
+                { task: "Gemini: Craft 90-sec career story", duration: "30 min" },
+                { task: "Info chat #1", duration: "30 min" },
+                { task: "Info chat #2", duration: "30 min" },
+                { task: "Attend Stanford HAI event", duration: "120 min" }
+            ],
+            25: [
+                { task: "Gemini: Deep research company strategy", duration: "35 min" },
+                { task: "Gemini: Mock PM interview - product sense", duration: "40 min" },
+                { task: "Gemini: Mock PM interview - case study", duration: "40 min" },
+                { task: "Gemini: Prepare weakness framing", duration: "30 min" },
+                { task: "Submit application #1", duration: "35 min" },
+                { task: "Submit applications #2-3", duration: "40 min" },
+                { task: "Gemini: Mock behavioral interview", duration: "35 min" },
+                { task: "Submit applications #4-5", duration: "40 min" },
+                { task: "Submit applications #6-8", duration: "45 min" },
+                { task: "Submit applications #9-10", duration: "40 min" }
+            ],
+            29: [
+                { task: "Prep for Interview #1", duration: "30 min" },
+                { task: "Interview #1", duration: "60 min" },
+                { task: "Gemini: Debrief Interview #1", duration: "25 min" },
+                { task: "Interview #2", duration: "60 min" },
+                { task: "Interview #3", duration: "60 min" },
+                { task: "Gemini: Negotiate offer", duration: "30 min" },
+                { task: "Accept offer 🎉", duration: "15 min" },
+                { task: "Gemini: Draft resignation letter", duration: "20 min" }
+            ]
+        };
+
+        const START_DATE = new Date('2025-12-02');
+        let state = {
+            weeks: {},
+            weekNotes: {},
+            generalNotes: '',
+            streak: 0,
+            lastCheckIn: null,
+            tasksCompleted: 0,
+            todayDone: false,
+            currentTaskIndex: 0,
+            skipCount: 0
+        };
+
+        let jobsData = { lastUpdated: '', jobs: [] };
+
+        // Load state
+        try {
+            const saved = localStorage.getItem('ai-career-planner-v6');
+            if (saved) state = { ...state, ...JSON.parse(saved) };
+        } catch (e) {}
+
+        function saveState() {
+            try { localStorage.setItem('ai-career-planner-v6', JSON.stringify(state)); } catch (e) {}
+        }
+
+        // Load jobs from JSON
+        async function loadJobs() {
+            try {
+                const response = await fetch('jobs.json');
+                jobsData = await response.json();
+                renderJobs();
+            } catch (e) {
+                console.error('Failed to load jobs:', e);
+                document.getElementById('jobsTableBody').innerHTML = 
+                    '<tr><td colspan="6" class="loading">Failed to load jobs. Check jobs.json</td></tr>';
+            }
+        }
+
+        function renderJobs() {
+            document.getElementById('jobsLastUpdated').textContent = jobsData.lastUpdated || 'Unknown';
+            const tbody = document.getElementById('jobsTableBody');
+            
+            if (!jobsData.jobs || jobsData.jobs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="loading">No jobs found</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = jobsData.jobs.map(job => `
+                <tr data-tier="${job.tier}" class="${job.active === false ? 'inactive' : ''}">
+                    <td><span class="company-name">${job.company}</span></td>
+                    <td>${job.role}</td>
+                    <td><span class="salary-range">${job.salary}</span></td>
+                    <td class="job-requirements"><ul>${job.requirements.map(r => `<li>${r}</li>`).join('')}</ul></td>
+                    <td><span class="tier-badge tier-${job.tier}">Tier ${job.tier}</span></td>
+                    <td><a href="${job.url}" target="_blank" class="apply-btn">Apply →</a></td>
+                </tr>
+            `).join('');
+        }
+
+        function filterJobs(tier) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('#jobsTableBody tr').forEach(row => {
+                if (tier === 'all' || row.getAttribute('data-tier') == tier) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function getCurrentWeek() {
+            const today = new Date();
+            const diffTime = today - START_DATE;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            return Math.min(Math.max(Math.floor(diffDays / 7) + 1, 1), 35);
+        }
+
+        function getWeekKey(weekNum) {
+            const map = { 1:1, 2:2, 3:2, 4:4, 5:4, 6:6, 7:7, 8:7, 9:7, 10:10, 11:10, 12:10,
+                         13:13, 14:13, 15:13, 16:13, 17:17, 18:17, 19:17, 20:20, 21:20, 22:20, 23:20, 24:20,
+                         25:25, 26:25, 27:25, 28:25, 29:29, 30:29, 31:29, 32:29, 33:29, 34:29, 35:29 };
+            return map[weekNum] || 1;
+        }
+
+        function getTodayTask() {
+            const currentWeek = getCurrentWeek();
+            const weekKey = getWeekKey(currentWeek);
+            const tasks = dailyTasks[weekKey] || dailyTasks[1];
+            
+            const today = new Date().toDateString();
+            if (state.lastCheckIn !== today) {
+                state.todayDone = false;
+                if (state.lastCheckIn) {
+                    state.currentTaskIndex = (state.currentTaskIndex + 1) % tasks.length;
+                }
+            }
+            
+            return {
+                task: tasks[state.currentTaskIndex % tasks.length],
+                weekNum: currentWeek
+            };
+        }
+
+        function markDone() {
+            if (state.todayDone) return;
+            
+            const today = new Date().toDateString();
+            const yesterday = new Date(Date.now() - 86400000).toDateString();
+            
+            state.todayDone = true;
+            state.tasksCompleted++;
+            state.skipCount = 0;
+            
+            if (state.lastCheckIn === yesterday || state.streak === 0) {
+                state.streak++;
+            }
+            state.lastCheckIn = today;
+            
+            saveState();
+            showConfetti();
+            updateDailyCheckin();
+            updateStats();
+        }
+
+        function markSkip() {
+            const today = new Date().toDateString();
+            state.todayDone = true;
+            state.lastCheckIn = today;
+            state.skipCount++;
+            if (state.skipCount >= 2) state.streak = 0;
+            saveState();
+            updateDailyCheckin();
+        }
+
+        function showConfetti() {
+            const container = document.getElementById('confetti');
+            const colors = ['#10b981', '#f59e0b', '#3b82f6', '#ec4899', '#8b5cf6'];
+            
+            for (let i = 0; i < 50; i++) {
+                const piece = document.createElement('div');
+                piece.style.cssText = `
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    left: ${Math.random() * 100}%;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    animation: fall ${1 + Math.random()}s ease-out forwards;
+                    animation-delay: ${Math.random() * 0.5}s;
+                `;
+                container.appendChild(piece);
+            }
+            
+            if (!document.getElementById('confetti-style')) {
+                const style = document.createElement('style');
+                style.id = 'confetti-style';
+                style.textContent = `@keyframes fall { 0% { transform: translateY(-10px) rotate(0); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }`;
+                document.head.appendChild(style);
+            }
+            
+            setTimeout(() => container.innerHTML = '', 2000);
+        }
+
+        function updateDailyCheckin() {
+            const checkinEl = document.getElementById('dailyCheckin');
+            const todayData = getTodayTask();
+            const today = new Date();
+            
+            document.getElementById('streakNumber').textContent = state.streak;
+            document.getElementById('streakFire').textContent = state.streak > 0 ? '🔥' : '💤';
+            document.getElementById('dateDisplay').textContent = today.toLocaleDateString('en-US', { 
+                weekday: 'long', month: 'short', day: 'numeric' 
+            });
+            document.getElementById('weekIndicator').textContent = `Week ${todayData.weekNum} of 35`;
+            
+            if (state.todayDone) {
+                checkinEl.classList.add('completed');
+                document.getElementById('checkinMain').innerHTML = `
+                    <div class="completed-message">
+                        <h3>✓ Done for today!</h3>
+                        <p>Come back tomorrow to keep the streak going.</p>
+                    </div>`;
+                document.getElementById('checkinButtons').style.display = 'none';
+            } else {
+                checkinEl.classList.remove('completed');
+                document.getElementById('todayTask').textContent = todayData.task.task;
+                document.getElementById('taskDuration').innerHTML = `⏱️ ~${todayData.task.duration}`;
+                document.getElementById('checkinButtons').style.display = 'flex';
+            }
+            
+            const progress = (state.tasksCompleted / 150) * 100;
+            document.getElementById('progressFill').style.width = Math.min(progress, 100) + '%';
+            
+            const target = new Date('2026-08-01');
+            const daysLeft = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+            document.getElementById('daysLeft').textContent = daysLeft + ' days left';
+        }
+
+        function updateStats() {
+            const weeksDone = Object.values(state.weeks).filter(v => v).length;
+            document.getElementById('weeksCompleted').textContent = weeksDone + '/12';
+            document.getElementById('tasksCompleted').textContent = state.tasksCompleted;
+            
+            const currentWeek = getCurrentWeek();
+            document.getElementById('currentPhase').textContent = currentWeek > 24 ? 3 : currentWeek > 12 ? 2 : 1;
+            
+            let noteCount = 0;
+            for (const k in state.weekNotes) if (state.weekNotes[k]?.trim()) noteCount++;
+            document.getElementById('notesCount').textContent = noteCount;
+        }
+
+        function toggleWeek(checkbox) {
+            const card = checkbox.closest('.week-card');
+            const week = card.getAttribute('data-week');
+            checkbox.classList.toggle('checked');
+            card.classList.toggle('completed');
+            state.weeks[week] = checkbox.classList.contains('checked');
+            saveState();
+            updateStats();
+        }
+
+        function copyPrompt(el) {
+            navigator.clipboard.writeText(el.textContent).then(() => {
+                el.classList.add('copied');
+                setTimeout(() => el.classList.remove('copied'), 1500);
+            });
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            if (sectionId === 'notes') updateNotesSummary();
+        }
+
+        function updateNotesSummary() {
+            const container = document.getElementById('notesSummary');
+            const weekTitles = {};
+            document.querySelectorAll('.week-card').forEach(c => {
+                weekTitles[c.getAttribute('data-week')] = c.querySelector('.week-title').textContent;
+            });
+            
+            let html = '';
+            Object.keys(state.weekNotes).sort((a,b) => a-b).forEach(week => {
+                const note = state.weekNotes[week];
+                if (note?.trim()) {
+                    html += `<div class="note-item"><div class="note-item-header">${weekTitles[week] || 'Week '+week}</div><div class="note-item-content">${note.replace(/</g,'&lt;')}</div></div>`;
+                }
+            });
+            container.innerHTML = html || '<p class="no-notes">No notes yet.</p>';
+        }
+
+        function highlightCurrentWeek() {
+            const weekKey = getWeekKey(getCurrentWeek());
+            document.querySelectorAll('.week-card').forEach(card => {
+                card.classList.toggle('current', card.getAttribute('data-week') == weekKey);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadJobs();
+            
+            for (const week in state.weeks) {
+                if (state.weeks[week]) {
+                    const card = document.querySelector(`[data-week="${week}"]`);
+                    if (card) {
+                        card.classList.add('completed');
+                        card.querySelector('.week-checkbox').classList.add('checked');
+                    }
+                }
+            }
+            
+            document.querySelectorAll('.week-notes-textarea').forEach(textarea => {
+                const week = textarea.getAttribute('data-week-note');
+                if (state.weekNotes?.[week]) textarea.value = state.weekNotes[week];
+                textarea.addEventListener('input', e => {
+                    state.weekNotes = state.weekNotes || {};
+                    state.weekNotes[e.target.getAttribute('data-week-note')] = e.target.value;
+                    saveState();
+                    updateStats();
+                });
+            });
+
+            const generalNotes = document.getElementById('generalNotes');
+            if (state.generalNotes) generalNotes.value = state.generalNotes;
+            generalNotes.addEventListener('input', e => {
+                state.generalNotes = e.target.value;
+                saveState();
+            });
+            
+            const today = new Date().toDateString();
+            if (state.lastCheckIn !== today) state.todayDone = false;
+            
+            highlightCurrentWeek();
+            updateDailyCheckin();
+            updateStats();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+{
+  "lastUpdated": "2025-12-03",
+  "jobs": [
+    {
+      "company": "Anthropic",
+      "role": "Strategic PM",
+      "salary": "$260-325K",
+      "requirements": ["10+ yrs PM", "SQL, market research"],
+      "tier": 1,
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/4512867008",
+      "active": true
+    },
+    {
+      "company": "Anthropic",
+      "role": "PM, Enterprise",
+      "salary": "$220-320K",
+      "requirements": ["5+ yrs enterprise", "Security/compliance"],
+      "tier": 1,
+      "url": "https://boards.greenhouse.io/anthropic/jobs/4493635008",
+      "active": true
+    },
+    {
+      "company": "Anthropic",
+      "role": "Enterprise Lead",
+      "salary": "$280-380K",
+      "requirements": ["10+ yrs, C-level exp", "Regulated industries"],
+      "tier": 1,
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/4642187008",
+      "active": true
+    },
+    {
+      "company": "Anthropic",
+      "role": "PM, Research",
+      "salary": "$275-375K",
+      "requirements": ["5+ yrs PM + LLM", "Python/SQL required"],
+      "tier": 1,
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/4933792008",
+      "active": true
+    },
+    {
+      "company": "Anthropic",
+      "role": "PM, API",
+      "salary": "$220-320K",
+      "requirements": ["5+ yrs API/enterprise", "Technical customers"],
+      "tier": 1,
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/4936029008",
+      "active": true
+    },
+    {
+      "company": "Anthropic",
+      "role": "PM, Workflows",
+      "salary": "$220-320K",
+      "requirements": ["Enterprise workflows", "Vertical solutions"],
+      "tier": 1,
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/4642215008",
+      "active": true
+    },
+    {
+      "company": "Anthropic",
+      "role": "Product Ops",
+      "salary": "$180-260K",
+      "requirements": ["5+ yrs product ops", "Launch coordination"],
+      "tier": 1,
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/4971429008",
+      "active": true
+    },
+    {
+      "company": "OpenAI",
+      "role": "Strategy & Ops",
+      "salary": "$200-400K",
+      "requirements": ["5+ yrs strategy", "Cross-functional"],
+      "tier": 1,
+      "url": "https://openai.com/careers/search?q=strategy",
+      "active": true
+    },
+    {
+      "company": "OpenAI",
+      "role": "Product Manager",
+      "salary": "$250-450K",
+      "requirements": ["5+ yrs PM", "0-to-1 products"],
+      "tier": 1,
+      "url": "https://openai.com/careers/search?q=product",
+      "active": true
+    },
+    {
+      "company": "Scale AI",
+      "role": "Strategy & Ops",
+      "salary": "$160-280K",
+      "requirements": ["3+ yrs consulting", "Data analysis"],
+      "tier": 1,
+      "url": "https://scale.com/careers?department=Strategy",
+      "active": true
+    },
+    {
+      "company": "Google",
+      "role": "AI PM (L5-L6)",
+      "salary": "$200-400K",
+      "requirements": ["5+ yrs PM", "ML product exp"],
+      "tier": 2,
+      "url": "https://www.google.com/about/careers/applications/jobs/results?q=AI%20product%20manager",
+      "active": true
+    },
+    {
+      "company": "Microsoft",
+      "role": "AI PM",
+      "salary": "$180-350K",
+      "requirements": ["5+ yrs PM", "Enterprise exp"],
+      "tier": 2,
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=AI%20product%20manager",
+      "active": true
+    },
+    {
+      "company": "Meta",
+      "role": "AI PM",
+      "salary": "$200-400K",
+      "requirements": ["5+ yrs PM", "Consumer AI"],
+      "tier": 2,
+      "url": "https://www.metacareers.com/jobs?q=AI%20product%20manager",
+      "active": true
+    },
+    {
+      "company": "Databricks",
+      "role": "PM, AI/ML",
+      "salary": "$180-320K",
+      "requirements": ["5+ yrs PM", "Data/ML platforms"],
+      "tier": 2,
+      "url": "https://www.databricks.com/company/careers/open-positions?department=Product",
+      "active": true
+    },
+    {
+      "company": "Two Sigma",
+      "role": "Quant Strategist",
+      "salary": "$200-500K+",
+      "requirements": ["PhD/MS preferred", "Quantitative skills"],
+      "tier": 3,
+      "url": "https://careers.twosigma.com/careers/SearchJobs",
+      "active": true
+    },
+    {
+      "company": "Citadel",
+      "role": "Quant Researcher",
+      "salary": "$250-600K+",
+      "requirements": ["PhD preferred", "Python/C++"],
+      "tier": 3,
+      "url": "https://www.citadel.com/careers/open-opportunities/",
+      "active": true
+    },
+    {
+      "company": "Stripe",
+      "role": "PM, ML",
+      "salary": "$190-350K",
+      "requirements": ["5+ yrs PM", "Fintech exp+"],
+      "tier": 3,
+      "url": "https://stripe.com/jobs/search?q=product%20machine%20learning",
+      "active": true
+    },
+    {
+      "company": "Ramp",
+      "role": "PM, AI",
+      "salary": "$170-280K",
+      "requirements": ["4+ yrs PM", "Fintech+"],
+      "tier": 3,
+      "url": "https://ramp.com/careers",
+      "active": true
+    }
+  ]
+}
