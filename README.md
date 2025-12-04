@@ -27,7 +27,7 @@ Personal 35-week career transition planner with daily check-ins, streak tracking
 
 ### Step 4: Access Your Planner
 ```
-https://YOUR-USERNAME.github.io/ai-career-planner/
+https://rollkuo.github.io/ai-career-planner/
 ```
 
 ---
