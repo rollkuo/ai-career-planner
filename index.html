@@ -737,6 +737,41 @@
             border-color: var(--navy);
         }
 
+        .update-jobs-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .update-jobs-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .update-jobs-btn:disabled {
+            background: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .update-jobs-btn.loading {
+            background: var(--gray);
+        }
+
+        .update-status {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
         .table-wrapper { overflow-x: auto; }
 
         .jobs-table {
@@ -1221,11 +1256,14 @@
                         <h2>💼 AI Jobs Database</h2>
                         <div class="jobs-meta">Last updated: <span id="jobsLastUpdated">Loading...</span></div>
                     </div>
-                    <div class="jobs-filters">
+                    <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                        <button class="update-jobs-btn" onclick="fetchLatestJobs()" id="updateJobsBtn">🔄 Update Jobs</button>
+                        <div class="jobs-filters">
                         <button class="filter-btn active" onclick="filterJobs('all')">All</button>
                         <button class="filter-btn" onclick="filterJobs(1)">Tier 1</button>
                         <button class="filter-btn" onclick="filterJobs(2)">Tier 2</button>
                         <button class="filter-btn" onclick="filterJobs(3)">Tier 3</button>
+                    </div>
                     </div>
                 </div>
                 <div class="table-wrapper">
@@ -1419,6 +1457,25 @@
                 console.error('Failed to load jobs:', e);
                 document.getElementById('jobsTableBody').innerHTML = 
                     '<tr><td colspan="6" class="loading">Failed to load jobs. Check jobs.json</td></tr>';
+            }
+        }
+
+        function fetchLatestJobs() {
+            // Get the GitHub repo URL from the current page
+            const repoUrl = 'https://github.com/YOUR-USERNAME/ai-career-planner/actions/workflows/update-jobs.yml';
+            
+            const confirmed = confirm(
+                '🔄 Update Jobs via GitHub Actions\n\n' +
+                'This will open GitHub where you can click "Run workflow" to fetch the latest AI jobs automatically.\n\n' +
+                'One-time setup required:\n' +
+                '1. Get free API key from aistudio.google.com\n' +
+                '2. Add GOOGLE_API_KEY as a repository secret\n' +
+                '3. Go to Settings → Secrets → Actions → New secret\n\n' +
+                'Click OK to open GitHub Actions.'
+            );
+            
+            if (confirmed) {
+                window.open(repoUrl, '_blank');
             }
         }
 
