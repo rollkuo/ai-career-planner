@@ -1,0 +1,200 @@
+name: Update AI Jobs
+
+on:
+  # Run every Sunday at 9am UTC
+  schedule:
+    - cron: '0 9 * * 0'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-jobs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install google-generativeai requests
+
+      - name: Update jobs using Gemini API
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: |
+          python - <<'EOF'
+          import google.generativeai as genai
+          import json
+          import os
+          from datetime import datetime
+
+          # Configure Gemini
+          genai.configure(api_key=os.environ['GOOGLE_API_KEY'])
+
+          # Use Gemini 2.0 Flash with grounding
+          model = genai.GenerativeModel(
+              'gemini-2.0-flash-exp',
+              tools='google_search_retrieval'
+          )
+
+          # Search for jobs at each company
+          companies = {
+              "Anthropic": {
+                  "tier": 1,
+                  "query": "Anthropic careers product manager strategy operations jobs site:anthropic.com OR site:greenhouse.io/anthropic",
+                  "keywords": ["Product Manager", "PM", "Strategy", "Operations", "Enterprise"]
+              },
+              "OpenAI": {
+                  "tier": 1,
+                  "query": "OpenAI careers product manager strategy operations jobs site:openai.com/careers",
+                  "keywords": ["Product Manager", "Strategy", "Operations"]
+              },
+              "Scale AI": {
+                  "tier": 1,
+                  "query": "Scale AI careers product manager strategy operations jobs site:scale.com/careers",
+                  "keywords": ["Product Manager", "Strategy", "Operations"]
+              },
+              "Google": {
+                  "tier": 2,
+                  "query": "Google AI product manager jobs site:careers.google.com",
+                  "keywords": ["AI", "Product Manager", "ML"]
+              },
+              "Microsoft": {
+                  "tier": 2,
+                  "query": "Microsoft AI product manager jobs site:careers.microsoft.com",
+                  "keywords": ["AI", "Product Manager"]
+              },
+              "Meta": {
+                  "tier": 2,
+                  "query": "Meta AI product manager jobs site:metacareers.com",
+                  "keywords": ["AI", "Product Manager"]
+              },
+              "Databricks": {
+                  "tier": 2,
+                  "query": "Databricks product manager AI ML jobs site:databricks.com/company/careers",
+                  "keywords": ["Product Manager", "AI", "ML"]
+              },
+              "Two Sigma": {
+                  "tier": 3,
+                  "query": "Two Sigma quantitative strategist jobs site:careers.twosigma.com",
+                  "keywords": ["Quantitative", "Strategist", "Researcher"]
+              },
+              "Citadel": {
+                  "tier": 3,
+                  "query": "Citadel quantitative researcher jobs site:citadel.com/careers",
+                  "keywords": ["Quantitative", "Researcher"]
+              },
+              "Stripe": {
+                  "tier": 3,
+                  "query": "Stripe product manager machine learning jobs site:stripe.com/jobs",
+                  "keywords": ["Product Manager", "ML", "Machine Learning"]
+              },
+              "Ramp": {
+                  "tier": 3,
+                  "query": "Ramp product manager AI jobs site:ramp.com/careers",
+                  "keywords": ["Product Manager", "AI"]
+              }
+          }
+
+          all_jobs = []
+
+          for company, config in companies.items():
+              try:
+                  print(f"Searching jobs for {company}...")
+
+                  prompt = f"""
+                  Search for current job openings at {company} for Product Manager, Strategy, or Operations roles.
+                  Focus on: {', '.join(config['keywords'])}
+
+                  For each relevant job found, extract:
+                  1. Exact job title
+                  2. Estimated salary range (use industry standards if not listed)
+                  3. Key requirements (years of experience, skills)
+                  4. Direct application URL
+
+                  Search query: {config['query']}
+
+                  Return results in this exact JSON format:
+                  {{
+                    "jobs": [
+                      {{
+                        "role": "Job Title",
+                        "salary": "$XXX-XXXK",
+                        "requirements": ["requirement 1", "requirement 2"],
+                        "url": "https://..."
+                      }}
+                    ]
+                  }}
+
+                  Only include active job postings. Limit to top 3 most relevant positions.
+                  """
+
+                  response = model.generate_content(prompt)
+                  result_text = response.text
+
+                  # Extract JSON from response
+                  if '```json' in result_text:
+                      json_text = result_text.split('```json')[1].split('```')[0].strip()
+                  elif '```' in result_text:
+                      json_text = result_text.split('```')[1].split('```')[0].strip()
+                  else:
+                      json_text = result_text.strip()
+
+                  try:
+                      jobs_data = json.loads(json_text)
+                      for job in jobs_data.get('jobs', []):
+                          all_jobs.append({
+                              "company": company,
+                              "role": job.get('role', 'N/A'),
+                              "salary": job.get('salary', 'Not listed'),
+                              "requirements": job.get('requirements', []),
+                              "tier": config['tier'],
+                              "url": job.get('url', '#'),
+                              "active": True
+                          })
+                  except json.JSONDecodeError:
+                      print(f"Could not parse JSON for {company}, skipping...")
+                      continue
+
+              except Exception as e:
+                  print(f"Error fetching jobs for {company}: {e}")
+                  continue
+
+          # If we got new jobs, update the file; otherwise keep existing data
+          if all_jobs:
+              jobs_output = {
+                  "lastUpdated": datetime.now().strftime("%Y-%m-%d"),
+                  "jobs": all_jobs
+              }
+
+              with open('jobs.json', 'w') as f:
+                  json.dump(jobs_output, f, indent=2)
+
+              print(f"Successfully updated {len(all_jobs)} jobs!")
+          else:
+              print("No jobs found, keeping existing jobs.json")
+          EOF
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add jobs.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Auto-update AI jobs - $(date +'%Y-%m-%d')"
+            git push
+          fi
