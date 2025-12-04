@@ -408,6 +408,73 @@
 
         .week-why strong { color: var(--navy); }
 
+        .week-learnings, .week-measures, .week-notebooklm {
+            background: var(--white);
+            border-radius: 6px;
+            padding: 0.8rem;
+            margin: 0.75rem 0;
+            font-size: 0.8rem;
+        }
+
+        .week-learnings {
+            border-left: 3px solid #10b981;
+        }
+
+        .week-measures {
+            border-left: 3px solid #f59e0b;
+        }
+
+        .week-notebooklm {
+            border-left: 3px solid #8b5cf6;
+        }
+
+        .week-learnings strong,
+        .week-measures strong,
+        .week-notebooklm strong {
+            color: var(--navy);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .week-learnings ul,
+        .week-measures ul,
+        .week-notebooklm ul {
+            margin: 0.5rem 0 0 1.2rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .week-learnings li,
+        .week-measures li,
+        .week-notebooklm li {
+            color: var(--gray);
+            margin: 0.35rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .week-learnings li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .week-measures li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        .week-notebooklm li:before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+
         .week-sections {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -1062,11 +1129,62 @@
                             <div class="week-date">Jan 6-12, 2026</div>
                         </div>
                     </div>
-                    <div class="week-why"><strong>Why:</strong> Hands-on API experience is essential.</div>
+                    <div class="week-why"><strong>Why:</strong> Hands-on API experience is essential for AI PM/Strategy roles.</div>
+                    <div class="week-sections">
+                        <div class="week-section">
+                            <div class="section-title">🎯 Goals</div>
+                            <ul class="section-list">
+                                <li>Claude & GPT API basics</li>
+                                <li>Prompt engineering patterns</li>
+                                <li>API pricing & economics</li>
+                            </ul>
+                        </div>
+                        <div class="week-section">
+                            <div class="section-title">✅ Done When</div>
+                            <ul class="section-list">
+                                <li>Built working chatbot</li>
+                                <li>Tested 5+ prompting techniques</li>
+                                <li>Can explain unit economics</li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="week-links">
                         <a href="https://docs.anthropic.com" target="_blank" class="week-link">Anthropic Docs</a>
                         <a href="https://platform.openai.com/docs" target="_blank" class="week-link">OpenAI Docs</a>
                     </div>
+
+                    <div class="ai-tools-section">
+                        <div class="ai-tools-header">🤖 AI Learning Accelerators</div>
+                        <div class="ai-tools-grid">
+                            <div class="ai-tool-card gemini-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon gemini-icon">G</div> Gemini Pro</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">API Mastery</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Explain the key differences between Claude and GPT-4 APIs: pricing, context windows, capabilities, and use cases. Give me a comparison table.</div>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Prompt Engineering</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Teach me 10 advanced prompt engineering techniques with examples: chain-of-thought, few-shot learning, role prompting, etc. Make examples relevant to product management.</div>
+                                </div>
+                            </div>
+                            <div class="ai-tool-card notebook-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon notebook-icon">N</div> NotebookLM</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Upload These</div>
+                                    <ul class="upload-list">
+                                        <li>Anthropic API docs (PDF)</li>
+                                        <li>OpenAI API docs (PDF)</li>
+                                        <li>Your chatbot code + results</li>
+                                    </ul>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Generate Q&A</div>
+                                    <div class="step-content">→ Ask: "What are best practices for API rate limiting?"<br>→ Ask: "How do I optimize API costs?"</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="week-notes">
                         <div class="week-notes-label">📝 My Notes</div>
                         <textarea class="week-notes-textarea" data-week-note="6" placeholder="Key learnings..."></textarea>
@@ -1087,11 +1205,62 @@
                             <div class="week-date">Jan 13 - Feb 2, 2026</div>
                         </div>
                     </div>
-                    <div class="week-why"><strong>Why:</strong> Your secret weapon for Stanford.</div>
+                    <div class="week-why"><strong>Why:</strong> Your secret weapon. Causal inference + finance background = unique differentiator for Stanford and top AI roles.</div>
+                    <div class="week-sections">
+                        <div class="week-section">
+                            <div class="section-title">🎯 Goals</div>
+                            <ul class="section-list">
+                                <li>Potential outcomes framework</li>
+                                <li>PSM, IV, DiD, RDD</li>
+                                <li>Double ML implementation</li>
+                            </ul>
+                        </div>
+                        <div class="week-section">
+                            <div class="section-title">✅ Done When</div>
+                            <ul class="section-list">
+                                <li>Finished Brady Neal Ch 1-6</li>
+                                <li>Implemented Double ML</li>
+                                <li>Applied to finance dataset</li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="week-links">
                         <a href="https://www.bradyneal.com/causal-inference-course" target="_blank" class="week-link">Brady Neal</a>
                         <a href="https://matheusfacure.github.io/python-causality-handbook/" target="_blank" class="week-link">Python Causality</a>
                     </div>
+
+                    <div class="ai-tools-section">
+                        <div class="ai-tools-header">🤖 AI Learning Accelerators</div>
+                        <div class="ai-tools-grid">
+                            <div class="ai-tool-card gemini-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon gemini-icon">G</div> Gemini Pro</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Finance Connection</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Explain causal inference concepts (PSM, IV, DiD, RDD) using finance examples: stock returns, trading strategies, and economic policy impacts. Make each concept concrete.</div>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Interview Stories</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Generate 3 examples of how causal ML could be applied at Anthropic/OpenAI: A/B testing alternatives, model evaluation, or product decisions.</div>
+                                </div>
+                            </div>
+                            <div class="ai-tool-card notebook-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon notebook-icon">N</div> NotebookLM</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Upload These</div>
+                                    <ul class="upload-list">
+                                        <li>Brady Neal chapters (PDFs)</li>
+                                        <li>Susan Athey Double ML paper</li>
+                                        <li>Your Double ML code + results</li>
+                                    </ul>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Deep Understanding</div>
+                                    <div class="step-content">→ Generate audio overview<br>→ Ask: "Compare PSM vs DiD - when to use each?"</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="week-notes">
                         <div class="week-notes-label">📝 My Notes</div>
                         <textarea class="week-notes-textarea" data-week-note="7" placeholder="Key learnings..."></textarea>
@@ -1112,10 +1281,61 @@
                             <div class="week-date">Feb 3-23, 2026</div>
                         </div>
                     </div>
-                    <div class="week-why"><strong>Why:</strong> PhD-level rigor for Stanford.</div>
+                    <div class="week-why"><strong>Why:</strong> PhD-level rigor shows Stanford you can handle their program. Deep ML theory mastery.</div>
+                    <div class="week-sections">
+                        <div class="week-section">
+                            <div class="section-title">🎯 Goals</div>
+                            <ul class="section-list">
+                                <li>SVM & kernel methods</li>
+                                <li>Bias-variance tradeoff</li>
+                                <li>Advanced ML theory</li>
+                            </ul>
+                        </div>
+                        <div class="week-section">
+                            <div class="section-title">✅ Done When</div>
+                            <ul class="section-list">
+                                <li>Watched 8 key lectures</li>
+                                <li>Completed 2 problem sets</li>
+                                <li>Passed comprehensive review</li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="week-links">
                         <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU" target="_blank" class="week-link">CS229 YouTube</a>
                     </div>
+
+                    <div class="ai-tools-section">
+                        <div class="ai-tools-header">🤖 AI Learning Accelerators</div>
+                        <div class="ai-tools-grid">
+                            <div class="ai-tool-card gemini-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon gemini-icon">G</div> Gemini Pro</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Concept Mastery</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Explain bias-variance tradeoff with a visual example. Then explain why this matters for real-world AI products at Anthropic.</div>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Comprehensive Review</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Generate 20 challenging questions covering all Phase 1 material: LLMs, supervised learning, neural networks, causal inference, and CS229. Include answers.</div>
+                                </div>
+                            </div>
+                            <div class="ai-tool-card notebook-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon notebook-icon">N</div> NotebookLM</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Upload Everything</div>
+                                    <ul class="upload-list">
+                                        <li>ALL Phase 1 notes (Weeks 1-12)</li>
+                                        <li>CS229 problem sets + solutions</li>
+                                        <li>Key papers and articles</li>
+                                    </ul>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Master Audio</div>
+                                    <div class="step-content">→ Generate comprehensive audio overview<br>→ Listen 2x: once now, once in Week 24</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="week-notes">
                         <div class="week-notes-label">📝 My Notes</div>
                         <textarea class="week-notes-textarea" data-week-note="10" placeholder="Key learnings..."></textarea>
@@ -1144,7 +1364,58 @@
                             <div class="week-date">Feb 24 - Mar 23, 2026</div>
                         </div>
                     </div>
-                    <div class="week-why"><strong>Why:</strong> #1 differentiator for non-traditional candidates.</div>
+                    <div class="week-why"><strong>Why:</strong> A strong portfolio project is the #1 differentiator for non-traditional candidates. Shows real execution.</div>
+                    <div class="week-sections">
+                        <div class="week-section">
+                            <div class="section-title">🎯 Goals</div>
+                            <ul class="section-list">
+                                <li>Build ML project end-to-end</li>
+                                <li>Clean code + documentation</li>
+                                <li>Polished GitHub presence</li>
+                            </ul>
+                        </div>
+                        <div class="week-section">
+                            <div class="section-title">✅ Done When</div>
+                            <ul class="section-list">
+                                <li>Project deployed & documented</li>
+                                <li>Can explain in 2 min</li>
+                                <li>Published on LinkedIn</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="ai-tools-section">
+                        <div class="ai-tools-header">🤖 AI Learning Accelerators</div>
+                        <div class="ai-tools-grid">
+                            <div class="ai-tool-card gemini-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon gemini-icon">G</div> Gemini Pro</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Project Ideas</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Suggest 5 ML portfolio projects combining finance + AI that would impress Anthropic/OpenAI. Include: causal ML, LLM applications, or unique datasets.</div>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Interview Story</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Help me craft a 2-minute story about my project: problem, approach, results, impact, and learnings. Make it compelling for a PM interview.</div>
+                                </div>
+                            </div>
+                            <div class="ai-tool-card notebook-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon notebook-icon">N</div> NotebookLM</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Upload These</div>
+                                    <ul class="upload-list">
+                                        <li>Similar projects from GitHub</li>
+                                        <li>Research papers for methods</li>
+                                        <li>Your project code + README</li>
+                                    </ul>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Quality Check</div>
+                                    <div class="step-content">→ Ask: "How can I improve this README?"<br>→ Ask: "What questions might interviewers ask?"</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="week-notes">
                         <div class="week-notes-label">📝 My Notes</div>
                         <textarea class="week-notes-textarea" data-week-note="13" placeholder="Key learnings..."></textarea>
@@ -1165,7 +1436,58 @@
                             <div class="week-date">Mar 24 - Apr 13, 2026</div>
                         </div>
                     </div>
-                    <div class="week-why"><strong>Why:</strong> Your digital presence is your first impression.</div>
+                    <div class="week-why"><strong>Why:</strong> Your digital presence is your first impression. Optimized LinkedIn = 3x more recruiter reach.</div>
+                    <div class="week-sections">
+                        <div class="week-section">
+                            <div class="section-title">🎯 Goals</div>
+                            <ul class="section-list">
+                                <li>AI-optimized LinkedIn</li>
+                                <li>Tailored resumes (3 versions)</li>
+                                <li>Content strategy</li>
+                            </ul>
+                        </div>
+                        <div class="week-section">
+                            <div class="section-title">✅ Done When</div>
+                            <ul class="section-list">
+                                <li>LinkedIn gets engagement</li>
+                                <li>3 resume versions ready</li>
+                                <li>Published 1 LinkedIn post</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="ai-tools-section">
+                        <div class="ai-tools-header">🤖 AI Learning Accelerators</div>
+                        <div class="ai-tools-grid">
+                            <div class="ai-tool-card gemini-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon gemini-icon">G</div> Gemini Pro</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">LinkedIn Optimization</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Rewrite my LinkedIn headline and About section for AI PM/Strategy roles. Highlight: finance background, ML learning journey, causal inference expertise. Make it ATS-optimized.</div>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Resume Tailoring</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Tailor my resume for [Company] [Role]. Analyze the JD, then rewrite my bullets to match their requirements. Quantify impact where possible.</div>
+                                </div>
+                            </div>
+                            <div class="ai-tool-card notebook-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon notebook-icon">N</div> NotebookLM</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Upload These</div>
+                                    <ul class="upload-list">
+                                        <li>Top AI PM LinkedIn profiles</li>
+                                        <li>Job descriptions (Anthropic, OpenAI, Google)</li>
+                                        <li>Your current resume</li>
+                                    </ul>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Gap Analysis</div>
+                                    <div class="step-content">→ Ask: "What keywords am I missing?"<br>→ Ask: "How do I position my finance→AI transition?"</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="week-notes">
                         <div class="week-notes-label">📝 My Notes</div>
                         <textarea class="week-notes-textarea" data-week-note="17" placeholder="Key learnings..."></textarea>
@@ -1186,10 +1508,61 @@
                             <div class="week-date">Apr 14 - May 18, 2026</div>
                         </div>
                     </div>
-                    <div class="week-why"><strong>Why:</strong> Networking opens doors applications can't.</div>
+                    <div class="week-why"><strong>Why:</strong> Networking opens doors that applications alone cannot. 70% of jobs come from connections.</div>
+                    <div class="week-sections">
+                        <div class="week-section">
+                            <div class="section-title">🎯 Goals</div>
+                            <ul class="section-list">
+                                <li>15+ meaningful connections</li>
+                                <li>Attend Stanford HAI event</li>
+                                <li>3+ informational chats</li>
+                            </ul>
+                        </div>
+                        <div class="week-section">
+                            <div class="section-title">✅ Done When</div>
+                            <ul class="section-list">
+                                <li>Built Stanford network</li>
+                                <li>Got 2+ warm referrals</li>
+                                <li>90-sec story is polished</li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="week-links">
                         <a href="https://hai.stanford.edu/events" target="_blank" class="week-link">HAI Events</a>
                     </div>
+
+                    <div class="ai-tools-section">
+                        <div class="ai-tools-header">🤖 AI Learning Accelerators</div>
+                        <div class="ai-tools-grid">
+                            <div class="ai-tool-card gemini-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon gemini-icon">G</div> Gemini Pro</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Research Faculty</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Deep Research: Susan Athey and Emma Brunskill's recent work. Give me 5 conversation starters for networking based on their latest papers.</div>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Cold Message Templates</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Generate 3 LinkedIn cold message templates for: (1) Stanford HAI researcher, (2) AI PM at Anthropic, (3) Strategy lead at OpenAI. Personalized, concise, specific ask.</div>
+                                </div>
+                            </div>
+                            <div class="ai-tool-card notebook-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon notebook-icon">N</div> NotebookLM</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Upload These</div>
+                                    <ul class="upload-list">
+                                        <li>Stanford HAI researchers' papers</li>
+                                        <li>Target companies' blog posts</li>
+                                        <li>LinkedIn profiles of connections</li>
+                                    </ul>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Prep Chats</div>
+                                    <div class="step-content">→ Before each info chat, ask NotebookLM for 5 personalized questions<br>→ Review their work audio summary</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="week-notes">
                         <div class="week-notes-label">📝 My Notes</div>
                         <textarea class="week-notes-textarea" data-week-note="20" placeholder="Key learnings..."></textarea>
@@ -1218,7 +1591,58 @@
                             <div class="week-date">May 19 - Jun 15, 2026</div>
                         </div>
                     </div>
-                    <div class="week-why"><strong>Why:</strong> Thorough prep and early applications.</div>
+                    <div class="week-why"><strong>Why:</strong> Thorough prep gives you time to iterate based on feedback. Apply early before req closes.</div>
+                    <div class="week-sections">
+                        <div class="week-section">
+                            <div class="section-title">🎯 Goals</div>
+                            <ul class="section-list">
+                                <li>Mock interviews (10+)</li>
+                                <li>Apply to 10 target roles</li>
+                                <li>Perfect storytelling</li>
+                            </ul>
+                        </div>
+                        <div class="week-section">
+                            <div class="section-title">✅ Done When</div>
+                            <ul class="section-list">
+                                <li>All applications submitted</li>
+                                <li>Can answer any PM question</li>
+                                <li>Got first interview invite</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="ai-tools-section">
+                        <div class="ai-tools-header">🤖 AI Learning Accelerators</div>
+                        <div class="ai-tools-grid">
+                            <div class="ai-tool-card gemini-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon gemini-icon">G</div> Gemini Pro</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Mock Interviews</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Act as Anthropic PM interviewer. Ask me 5 product sense questions about Claude API. Be tough. Give feedback after each answer.</div>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Company Research</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">Deep Research: Anthropic's product strategy, recent launches, challenges, and differentiation vs OpenAI. Generate a 1-page brief I can memorize.</div>
+                                </div>
+                            </div>
+                            <div class="ai-tool-card notebook-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon notebook-icon">N</div> NotebookLM</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Upload These</div>
+                                    <ul class="upload-list">
+                                        <li>Glassdoor interview experiences</li>
+                                        <li>Company blog posts & docs</li>
+                                        <li>Your project + resume + notes</li>
+                                    </ul>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Before Each Interview</div>
+                                    <div class="step-content">→ Generate audio overview of company<br>→ Ask: "What's my weakness story?"</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="week-notes">
                         <div class="week-notes-label">📝 My Notes</div>
                         <textarea class="week-notes-textarea" data-week-note="25" placeholder="Key learnings..."></textarea>
@@ -1239,7 +1663,58 @@
                             <div class="week-date">Jun 16 - Aug 3, 2026</div>
                         </div>
                     </div>
-                    <div class="week-why"><strong>Why:</strong> Close strong before deadline.</div>
+                    <div class="week-why"><strong>Why:</strong> Execution time. Close strong before green card deadline. Negotiate from strength.</div>
+                    <div class="week-sections">
+                        <div class="week-section">
+                            <div class="section-title">🎯 Goals</div>
+                            <ul class="section-list">
+                                <li>Complete 5+ interviews</li>
+                                <li>Land 1-2 offers</li>
+                                <li>Negotiate & accept</li>
+                            </ul>
+                        </div>
+                        <div class="week-section">
+                            <div class="section-title">✅ Done When</div>
+                            <ul class="section-list">
+                                <li>Accepted dream offer</li>
+                                <li>Resigned from BlackRock</li>
+                                <li>Celebrating your win! 🎉</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="ai-tools-section">
+                        <div class="ai-tools-header">🤖 AI Learning Accelerators</div>
+                        <div class="ai-tools-grid">
+                            <div class="ai-tool-card gemini-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon gemini-icon">G</div> Gemini Pro</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Interview Debrief</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">I just had an interview with [Company]. Here's what went well and what didn't. Give me 3 concrete improvements for next time.</div>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Negotiation Strategy</div>
+                                    <div class="prompt-box" onclick="copyPrompt(this)">I have offers from [Company A: $X] and [Company B: $Y]. Help me negotiate up. What's my leverage? Draft a negotiation email.</div>
+                                </div>
+                            </div>
+                            <div class="ai-tool-card notebook-card">
+                                <div class="ai-tool-header"><div class="ai-tool-icon notebook-icon">N</div> NotebookLM</div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Upload These</div>
+                                    <ul class="upload-list">
+                                        <li>ALL your notes from Weeks 1-28</li>
+                                        <li>Interview feedback & debriefs</li>
+                                        <li>Offer letters & comp breakdowns</li>
+                                    </ul>
+                                </div>
+                                <div class="ai-tool-step">
+                                    <div class="step-label">Final Push</div>
+                                    <div class="step-content">→ Listen to your Phase 1 audio one last time<br>→ Confidence boost before each interview</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="week-notes">
                         <div class="week-notes-label">📝 My Notes</div>
                         <textarea class="week-notes-textarea" data-week-note="29" placeholder="Key learnings..."></textarea>
